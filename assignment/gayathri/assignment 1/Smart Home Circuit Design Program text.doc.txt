@@ -1,0 +1,70 @@
+// C++ code
+//
+int trig =4;
+int echo =6;
+int piezo=9;
+int temp = 0;
+void setup()
+{
+  pinMode(trig,OUTPUT);
+  pinMode(echo,INPUT);
+  pinMode(8,OUTPUT);
+  pinMode(10,OUTPUT);
+  pinMode(11,OUTPUT);
+  pinMode(9,OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  digitalWrite(trig,LOW);
+  digitalWrite(trig,HIGH);
+   delayMicroseconds(10);
+   digitalWrite(trig,LOW);
+  float dur =pulseIn(echo,HIGH);
+   float dist =  (dur*0.0343/2);
+   Serial.print("distance");
+   Serial.println('dist');
+   if(dist >=100)
+   {
+   digitalWrite(9,HIGH);
+     
+   }
+   else
+   {
+   digitalWrite(9,LOW);
+    
+}
+  
+{
+   temp = map(((analogRead(A0) - 20) * 3.04), 0, 1023, -40, 125);
+   Serial.println(temp);
+   if (temp < 25) 
+   {
+     digitalWrite(11,HIGH);
+     digitalWrite(10,LOW);
+     digitalWrite(8,LOW);
+   }
+   if (temp > 25 && temp < 50) 
+   {
+     digitalWrite(11,LOW);
+     digitalWrite(10,HIGH);
+     digitalWrite(8,LOW);
+   }
+    if (temp > 50 && temp < 125) 
+   {
+     digitalWrite(11,LOW);
+     digitalWrite(10,LOW);
+     digitalWrite(8,HIGH);
+   }
+   
+  delay(10);
+   } 
+}
+    
+   
+     
+     
+   
+    
+  
